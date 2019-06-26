@@ -1,0 +1,10 @@
+{
+  "name": "prototype-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/nationalarchives/prototype-server.git",
+  "license": "MIT",
+  "dependencies": {
+    "serverless-python-requirements": "^4.3.0"
+  }
+}

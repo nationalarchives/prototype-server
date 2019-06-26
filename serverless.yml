@@ -1,0 +1,32 @@
+service: tdr-rest-service
+
+provider:
+  name: aws
+  runtime: python3.6
+  stage: dev
+  region: eu-west-2
+
+
+plugins:
+  - serverless-python-requirements
+
+package:
+  individually: false
+  exclude:
+    - node_modules/**
+
+
+functions:
+  create_collection:
+    handler: create_collection.handler
+    events:
+      - http:
+          path: collections
+          method: post
+
+  get_collections:
+    handler: get_collections.handler
+    events:
+      - http:
+          path: collections
+          method: get
