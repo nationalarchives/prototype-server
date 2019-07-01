@@ -9,7 +9,7 @@ provider:
 
 plugins:
   - serverless-python-requirements
-  - serverless-offline
+  - serverless-offline-python
 
 package:
   individually: false
