@@ -5,6 +5,13 @@
   "repository": "https://github.com/nationalarchives/prototype-server.git",
   "license": "MIT",
   "dependencies": {
+    "serverless": "^1.46.1",
     "serverless-python-requirements": "^4.3.0"
+  },
+  "devDependencies": {
+    "serverless-offline": "^5.5.0"
+  },
+  "scripts": {
+    "offline": "sls offline"
   }
 }
