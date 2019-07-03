@@ -5,6 +5,8 @@ provider:
   runtime: python3.6
   stage: dev
   region: eu-west-2
+  environment:
+    REDIRECT_URL: http://localhost:3000
 
 
 plugins:
@@ -18,12 +20,15 @@ package:
 
 
 functions:
+  serverAuthoriser:
+    handler: auth.handler
   create_collection:
     handler: create_collection.handler
     events:
       - http:
           path: collections
           method: post
+          authorizer: ${self:custom.authorizer.server}
 
   get_collections:
     handler: get_collections.handler
@@ -31,3 +36,11 @@ functions:
       - http:
           path: collections
           method: get
+          authorizer: ${self:custom.authorizer.server}
+custom:
+  authorizer:
+    server:
+      name: serverAuthoriser
+      type: REQUEST
+      identitySource: method.request.header.Cookie
+      resultTtlInSeconds: 0
