@@ -1,1 +1,3 @@
+jwt
+requests
 botocore==1.12.180

@@ -1,4 +1,5 @@
 from utils import send_query
+import os
 
 
 def handler(event, context):
@@ -15,7 +16,7 @@ def handler(event, context):
     return {
         "statusCode": 301,
         "headers": {
-            "Location": 'https://9ofer4y2x6.execute-api.eu-west-2.amazonaws.com/dev/upload?id=%s' % json_response['data']['createCollection']['id'],
+            "Location": '%s/upload?id=%s' % (os.environ['REDIRECT_URL'], json_response['data']['createCollection']['id'],)
         }
     }
 

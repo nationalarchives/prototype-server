@@ -2,3 +2,8 @@
 node_modules
 .serverless
 __pycache__
+bin1
+lib
+lib64
+pyvenv.cfg
+venv

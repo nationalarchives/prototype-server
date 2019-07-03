@@ -5,6 +5,7 @@ provider:
   runtime: python3.6
   stage: dev
   region: eu-west-2
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
 
 
 plugins:
@@ -18,12 +19,15 @@ package:
 
 
 functions:
+  serverAuthoriser:
+    handler: auth.handler
   create_collection:
     handler: create_collection.handler
     events:
       - http:
           path: collections
           method: post
+          authorizer: ${self:custom.authorizer.server}
 
   get_collections:
     handler: get_collections.handler
@@ -31,3 +35,12 @@ functions:
       - http:
           path: collections
           method: get
+          authorizer: ${self:custom.authorizer.server}
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  authorizer:
+    server:
+      name: serverAuthoriser
+      type: REQUEST
+      identitySource: method.request.header.Cookie
+      resultTtlInSeconds: 0
