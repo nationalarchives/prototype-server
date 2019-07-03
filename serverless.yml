@@ -5,8 +5,7 @@ provider:
   runtime: python3.6
   stage: dev
   region: eu-west-2
-  environment:
-    REDIRECT_URL: http://localhost:3000
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
 
 
 plugins:
@@ -38,6 +37,7 @@ functions:
           method: get
           authorizer: ${self:custom.authorizer.server}
 custom:
+  stage: ${opt:stage, self:provider.stage}
   authorizer:
     server:
       name: serverAuthoriser
