@@ -9,6 +9,13 @@ Install Python 3 and make sure you can run it using the command `python3`.
 
 [pyenv]: https://realpython.com/intro-to-pyenv/
 
+Start a python virtual environment:
+```
+python3.6 -m venv venv/
+source venv/bin/activate
+pip install -r requirements.txt
+
+````
 Install development dependencies with:
 
 ```
@@ -19,5 +26,5 @@ pip install -r requirements.txt
 Run the API:
 
 ```
-yarn offline
+yarn offline --stage=local --port=3001
 ```
