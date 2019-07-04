@@ -2,15 +2,17 @@ from utils import send_query
 import os
 
 
+
 def handler(event, context):
-    
+    collectionName = event['body'].split("=",1)[1]
     query = """
         mutation {
-           createCollection(name: "test", copyright: "copyright", closure: "closure", legalStatus: "legalStatus") {
+           createCollection(name: "%s", copyright: "copyright", closure: "closure", legalStatus: "legalStatus") {
               id
            }
     }
-    """
+    """ %(collectionName)
+
     json_response = send_query(event, query)
 
     return {
