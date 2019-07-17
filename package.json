@@ -13,6 +13,7 @@
     "serverless-offline-python": "^3.22.1"
   },
   "scripts": {
-    "offline": "sls offline"
+    "offline": "sls offline",
+    "offline:docker": "sls offline --host 0.0.0.0 --stage docker"
   }
 }

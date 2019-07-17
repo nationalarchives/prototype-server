@@ -2,6 +2,7 @@ from jwt import (
     JWT, jwk_from_dict
 )
 import requests
+from http import cookies
 
 
 def create_policy(principal_id, effect, resource):
@@ -27,7 +28,8 @@ def get_token(event):
         auth_header = event['headers']['cookie']
     else:
         auth_header = event['headers']['Cookie']
-    return auth_header.split("=")[1]
+    token = cookies.SimpleCookie(auth_header)['token'].value
+    return token
 
 
 def handler(event, context):

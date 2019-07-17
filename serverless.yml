@@ -3,7 +3,7 @@ service: tdr-rest-service
 provider:
   name: aws
   runtime: python3.6
-  stage: dev
+  stage: test
   region: eu-west-2
   environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
 
