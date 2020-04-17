@@ -2,6 +2,10 @@
 
 A REST API for the Transfer Digital Records prototype.
 
+**This repository has been retired.** It was a prototype that was built during
+the [Transfer Digital Records](https://github.com/nationalarchives/tdr-dev-documentation/)
+Alpha phase.
+
 ## Developer setup
 
 Install Python 3 and make sure you can run it using the command `python3`.
